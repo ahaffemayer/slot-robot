@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "slot_robot"
+version = "0.1.0"
+description = "A package to use the slot algorithm in meshcat."
+authors = [{ name = "Arthur Haffemayer", email = "arthur.haffemayer@laas.fr" }]  
+license = { file = "LICENSE" }  # Ensure you have a LICENSE file
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "torch",
+    "numpy",
+    "matplotlib",
+    "scipy",
+    "rich",
+    "pinocchio",
+    "meshcat",
+    "example-robot-data",
+]
+
+[tool.setuptools]
+packages = ["slot_robot"]
+[tool.setuptools.package-dir]
+"" = "src"
