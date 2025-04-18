@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 def main():
     # Path to lightning_logs
-    path = Path(__file__).parent / "checkpoints" / "lightning_logs"
+    path = Path(__file__).parent / "lightning_logs"
 
     # Get latest version
     version_path = natsorted(path.glob("version_*"))[-1]
