@@ -29,6 +29,7 @@ colors = [
 scene_data = {}
 
 for scene_idx in range(n_scenes):
+    print(f"Generating scene {scene_idx + 1}/{n_scenes}")
     # Fresh models for each scene
     rmodel, cmodel, vmodel = load_reduced_panda()
     
@@ -73,6 +74,11 @@ for scene_idx in range(n_scenes):
     q = pin.neutral(rmodel)
     pin.framesForwardKinematics(rmodel, rmodel.createData(), q)  # Proper kinematics init
     vis = create_viewer(rmodel, cmodel, vmodel)
+    fOcam=pin.SE3.Identity()
+    fOcam.translation=np.array([-1.5, 0.0, 0.2])
+    cam=vis.viewer["/Cameras/default"]
+
+    cam.set_transform(np.array(fOcam))
     vis.display(q)
     img = vis.viewer.get_image()
     img.save(f"generated_scenes/{scene_name}.png")
